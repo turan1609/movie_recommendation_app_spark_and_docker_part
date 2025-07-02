@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  pyspark-lab:
+    image: jupyter/pyspark-notebook:spark-3.5.1
+
+    container_name: movielens_optimizer
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - SPARK_OPTS=--driver-memory 16g --executor-memory 16g
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/home/jovyan/work
+      
+    restart: unless-stopped
